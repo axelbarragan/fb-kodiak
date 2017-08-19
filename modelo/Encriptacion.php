@@ -69,4 +69,7 @@ class Encriptacion {
 /*$obj = Encriptacion::vamoADarle();
 echo $obj;*/
 
+/*$obj = Encriptacion::encLogin("1234","1234");
+var_dump($obj);*/
+
 ?>

@@ -36,7 +36,7 @@ index();
               <span class="info-box-icon bg-aqua"><i class="fa fa-hospital-o"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Total de hoteles</span>
+                <span class="info-box-text">TOTAL DE CLIENTES</span>
                 <span class="info-box-number cuantosHoteles"></span>
               </div>
               <!-- /.info-box-content -->

@@ -2,14 +2,14 @@
   #Constantes de conexión
 define('SERVIDOR','localhost');
 define('USUARIO','root');
-define('PASSWORD','1234');
-define('BASE','reservacion');
+define('PASSWORD','');
+define('BASE','f1vb0x');
 
 #Constantes del sistema
-define('URL','http://localhost/flubox/plataforma/fb-samba/');
+define('URL','http://localhost/flubox/fb-kodiak/');
 define('URLADMIN','web/administrador/');
 define('URLCLIEN','web/clientes/');
-define('NOMBRE_PROYECTO','Proyecto Samba');
+define('NOMBRE_PROYECTO','Proyecto Kodiak');
 
 define('SALT','1234'); 
 
