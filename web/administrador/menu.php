@@ -18,16 +18,16 @@
       </li>
       <li class="treeview">
         <a href="#">
-          <i class="fa fa-hospital-o"></i>
-          <span>Hoteles</span>
+          <i class="fa fa-address-card" aria-hidden="true"></i>
+          <span>Clientes</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="<?php echo URL.URLADMIN; ?>hoteles/agregar"><i class="fa fa-plus"></i> Agregar</a></li>
-          <li><a href="<?php echo URL.URLADMIN; ?>hoteles/enlistar"><i class="fa fa-circle-o"></i> Ver lista</a></li>
-          <li><a href="<?php echo URL.URLADMIN; ?>hoteles/hoteles-borrados"><i class="fa fa-trash" aria-hidden="true"></i> Hoteles borrados</a></li>
+          <li><a href="<?php echo URL.URLADMIN; ?>clientes/agregar"><i class="fa fa-plus"></i> Agregar</a></li>
+          <li><a href="<?php echo URL.URLADMIN; ?>clientes/enlistar"><i class="fa fa-circle-o"></i> Ver lista</a></li>
+          <li><a href="<?php echo URL.URLADMIN; ?>clientes/hoteles-borrados"><i class="fa fa-trash" aria-hidden="true"></i> Clientes borrados</a></li>
         </ul>
       </li>
       <li class="treeview">
