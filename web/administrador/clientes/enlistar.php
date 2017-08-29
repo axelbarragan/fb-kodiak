@@ -33,7 +33,6 @@ index();
               <thead>
                 <tr>
                   <th>NOMBRE</th>
-                  <th>DIRECCIÓN</th>
                   <th>ACCION</th>
                 </tr>
               </thead>
@@ -119,7 +118,7 @@ index();
       function mostrarDatos() {
         $.ajax({
           type: "POST",
-          url: "<?php echo URL; ?>controlador/hotelEnlistar",
+          url: "<?php echo URL; ?>controlador/clienteEnlistar",
           beforeSend: function() {
             //alert("Enviando");
           },
@@ -127,8 +126,7 @@ index();
             $.each(data, function(i, item) {
               $('tbody').append(
                 "<tr>"+
-                "<td id='nombreHotel'>"+item['nombre_hotel']+"</td>"+
-                "<td>"+item['direccion_hotel']+"</td>"+
+                "<td id='nombreHotel'>"+item['cli_nombre']+" "+item['cli_apellidos']+"</td>"+
                 "<td><button id='borrarServicio' idHotel='"+item['id_hotel']+"' class='btn btn-danger'><i class='fa fa-minus-circle' aria-hidden='true'></i> Borrar</button><button id='ver' idHotel='"+item['id_hotel']+"' class='btn btn-primary'>Ver</button></td>"+
                 "</tr>"
                 );

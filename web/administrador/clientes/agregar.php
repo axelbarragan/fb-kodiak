@@ -18,7 +18,7 @@ index();
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          INGRESA UN NUEVO HOTEL
+          INGRESA UN NUEVO CLIENTE
           <small></small>
         </h1>
         <ol class="breadcrumb">
@@ -32,34 +32,30 @@ index();
         <!-- Info boxes -->
         <div class="row">
           <div class="col-lg-12 col-md-12">
-            <form id="formNuevoHotel">
+            <form id="formNuevoCliente">
               <div class="form-group">
-                <label for="nombre">Nombre del hotel</label>
+                <label for="nombre">Nombre del cliente</label>
                 <input type="text" name="nombre" class="form-control" id="nombre">
               </div>
               <div class="form-group">
-                <label for="direccion">Dirección del hotel</label>
-                <input type="text" name="direccion" class="form-control" id="direccion">
+                <label for="direccion">Apellidos del cliente</label>
+                <input type="text" name="apellidos" class="form-control" id="direccion">
               </div>
               <div class="form-group">
-                <label for="telefono">Teléfono del hotel</label>
-                <input type="text" name="telefono" class="form-control" id="telefono">
+                <label for="telefono">Dirección del cliente</label>
+                <input type="text" name="direccion" class="form-control" id="telefono">
               </div>
               <div class="form-group">
-                <label for="email">Correo del titular del hotel</label>
+                <label for="email">Email del cliente</label>
                 <input type="email" name="email" class="form-control" id="email">
               </div>
               <div class="form-group">
-                <label for="nombreContacto">Nombre del titular del hotel</label>
-                <input type="text" name="nombreContacto" class="form-control" id="nombreContacto">
+                <label for="nombreContacto">Número de teléfono del cliente</label>
+                <input type="text" name="numcel" class="form-control" id="nombreContacto">
               </div>
               <div class="form-group">
-                <label for="apellidosContacto">Apellidos del titular del hotel</label>
-                <input type="text" name="apellidosContacto" class="form-control" id="apellidosContacto">
-              </div>
-              <div class="form-group">
-                <label for="img">Logo del hotel</label>
-                <input type="file" class="form-control" id="campoFichero" />
+                <label for="apellidosContacto">Fecha de nacimiento del cliente</label>
+                <input type="text" name="fecnac" class="form-control" id="apellidosContacto">
               </div>
               <button class="btn btn-primary enviarDatos">Guardar</button>
             </form>
@@ -92,42 +88,37 @@ index();
       $('.dropdown-menu').click(function(e) {
         e.stopPropagation();
       });
+
       $('.enviarDatos').click(function(e) {
         e.preventDefault();
-        alert("Empieza");
-        var paqueteDeDatos = new FormData();
-        //var dataString = new FormData($('#formNuevoHotel')[0]);
-        paqueteDeDatos.append('nom', $('#nombre').prop('value'));
-        paqueteDeDatos.append('dir', $('#direccion').prop('value'));
-        paqueteDeDatos.append('tel', $('#telefono').prop('value'));
-        paqueteDeDatos.append('ema', $('#email').prop('value'));
-        paqueteDeDatos.append('nomcon', $('#nombreContacto').prop('value'));
-        paqueteDeDatos.append('apecon', $('#apellidosContacto').prop('value'));
-        paqueteDeDatos.append('archivo', $('#campoFichero')[0].files[0]);
+        var dataString = $('#formNuevoCliente').serialize();
         $.ajax({
-          url: "<?php echo URL; ?>controlador/hotelGuardar",
           type: "POST",
-          contentType: false,
-          data: paqueteDeDatos,
-          processData: false,
-          cache: false,
-          /*beforeSend: function() {
-            alert('Datos serializados: '+paqueteDeDatos);
-            console.log(paqueteDeDatos);
-          },*/
-          success: function(data) {
-            alert(data);
-            console.log(data);
+          url: "<?php echo URL; ?>controlador/clienteGuardar",
+          data: dataString,
+          beforeSend: function() {
+            //alert('Datos serializados: '+dataString);
           },
-          error: function() {
-            alert("algo ha pasado");
+          success: function(data) {
+            console.log(data);
+            //alert("Recibiendo: "+data);
+            switch (data) {
+              case "oka":
+              window.location.href = "redireccion"
+              break;
+              case "noka":
+              swal({
+                title: '¡CUENTA SUSPENDIDA!',
+                text: 'Ponte en contacto con Flubox para obtener mas información.',
+                type: 'error',
+                confirmButtonText: 'Cool'
+              })
+              break;
+            }
           }
         });
       });
-      $('#example tbody').on( 'click', 'button', function () {
-        var data = tabla.row( $(this).parents('tr') ).data();
-        alert("ID: "+data[0]);
-    } );
+
     });
   </script>
 </body>

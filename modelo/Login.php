@@ -39,6 +39,7 @@ public function login($usuario, $pass) {
       $_SESSION['sesion_iniciada'] = "si";
       $_SESSION['nombre_usuario']  = $row['nombre_usuario']." ".$row['apellidos_usuario'];
       $_SESSION['nivel_usuario']   = $row['tipo_usuario'];
+      $_SESSION['nombre_empresa']  = "Flubox"; 
       $token = Encriptacion::generarToken();
       $_SESSION['token'] = $token;
       echo "oka";

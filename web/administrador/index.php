@@ -33,11 +33,11 @@ index();
         <div class="row">
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
-              <span class="info-box-icon bg-aqua"><i class="fa fa-hospital-o"></i></span>
+              <span class="info-box-icon bg-aqua"><i class="ion ion-ios-people-outline"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">TOTAL DE CLIENTES</span>
-                <span class="info-box-number cuantosHoteles"></span>
+                <span class="info-box-number cuantosClientes"></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -115,15 +115,15 @@ index();
       function cargarDatos() {
         $.ajax({
           type: "POST",
-          url: "<?php echo URL; ?>controlador/cuantosHoteles",
+          url: "<?php echo URL; ?>controlador/cuantosClientes",
           beforeSend: function() {
             //alert('Datos serializados: ');
           },
           success: function(data) {
             //alert(data);
             var json=$.parseJSON(data);
-            $('.cuantosHoteles').html(json.cuantosHoteles);
-            $('.cuantasHabitaciones').html(json.cuantasHabitaciones);
+            $('.cuantosClientes').html(json.cuantosClientes);
+            /*$('.cuantasHabitaciones').html(json.cuantasHabitaciones);*/
           }
         });
       }

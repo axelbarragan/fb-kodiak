@@ -4,7 +4,7 @@
 
   $wish = new Hoteles;
   //$wish->cerrarSesion();
-  $wish->contarHoteles();
+  $wish->contarClientes();
   $wish->cerrar();
 
 ?>

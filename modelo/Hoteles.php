@@ -10,10 +10,11 @@ class Hoteles extends Conexion {
     //Atributos a usar
   private $mysqli;
   private $nombre;
+  private $apellidos;
   private $direccion;
   private $telefono;
   private $email;
-  private $nombreCont;
+  private $fecnac;
   private $apellidoCont;
   private $id;
   private $status;
@@ -47,20 +48,19 @@ class Hoteles extends Conexion {
   }
 
     #Método para verificar datos
-  public function registrar($nombreHotel, $direccion, $telefono, $email, $nombreCont, $apellidoCont, $img) {
-    $this->nombre       = $nombreHotel;
-    $this->direccion    = $direccion;
-    $this->telefono     = $telefono;
-    $this->email        = $email;
-    $this->nombreCont   = $nombreCont;
-    $this->apellidoCont = $apellidoCont;
-    $this->img          = $img;
-    $this->status       = 1;
-    $this->salt         = Encriptacion::obtenerCodigoAleatorioNumerico();
-    $this->pass         = 1234;
-    $this->pass         = hash_hmac("sha256", $this->pass, $this->salt);
+  public function registrar($nombre, $apellidos, $direccion, $email, $numcel, $fecnac) {
+    $this->nombre    = $nombre;
+    $this->apellidos = $apellidos;
+    $this->direccion = $direccion;
+    $this->email     = $email;
+    $this->telefono  = $numcel;
+    $this->fecnac    = $fecnac;
+    $this->status    = 1;
+    $this->salt      = Encriptacion::obtenerCodigoAleatorioNumerico();
+    $this->pass      = 1234;
+    $this->pass      = hash_hmac("sha256", $this->pass, $this->salt);
 
-    $query = "INSERT INTO hotel VALUES (null,'$this->nombre','$this->direccion','$this->telefono','$this->email','$this->status','$this->fecha','$this->hora',null)";
+    $query = "INSERT INTO clientes VALUES (null,'$this->nombre','$this->apellidos','$this->direccion','$this->email','$this->fecha','$this->hora',null)";
     $resultado = $this->mysqli->query($query);
     if($resultado) {
       $id_hotel = $this->mysqli->insert_id;
@@ -266,7 +266,7 @@ class Hoteles extends Conexion {
   public function enlistar() {
       //Código para enlistar
     $columns = array();
-    $query     = "SELECT id_hotel, nombre_hotel, direccion_hotel, telefono_hotel FROM hotel";
+    $query     = "SELECT id_cliente, cli_nombre, cli_apellidos, cli_fecha_nac FROM clientes";
     $res = $this->mysqli->query($query);
     if($res) {
       while ($row = $res->fetch_assoc()) {
@@ -295,20 +295,12 @@ class Hoteles extends Conexion {
     }
   }
 
-  public function contarHoteles() {
-    $query = "SELECT * FROM hotel";
+  public function contarClientes() {
+    $query = "SELECT * FROM clientes";
     $res   = $this->mysqli->query($query);
-    if($res) {
-      $cantidadHoteles = $res->num_rows;
-      $query = "SELECT * FROM habitaciones";
-      $res   = $this->mysqli->query($query);
-      if($res) {
-        $cantidadHabitaciones = $res->num_rows;
-        $valores = array("cuantosHoteles" => $cantidadHoteles, "cuantasHabitaciones" => $cantidadHabitaciones);
-        echo json_encode($valores);
-      }
-      
-    }
+    $cantidadHabitaciones = $res->num_rows;
+    $valores = array("cuantosClientes" => $cantidadHabitaciones);
+    echo json_encode($valores);
   }
 }
 ?>
